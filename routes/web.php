@@ -3,6 +3,9 @@
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MailController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +25,12 @@ Route::get('/ListCart', [CartController::class, 'ViewListCart']);
 Route::get('/SaveItemListCart/{id}/{quanty}', [CartController::class, 'SaveListItemCart']);
 Route::get('/DeleteItemListCart/{id}', [CartController::class, 'DeleteListItemCart']);
 
+Route::get('/contact',[HomeController::class, 'contact'])->name('contact');
 
+Route::get('mail-handle',[MailController::class, 'index'])->name('mail');
+Route::post('mail-handle',[MailController::class, 'index'])->name('handle-mail');
 
-
+Route::get('/home',[HomeController::class, 'index'])->name('home');
+Route::get('/shop',[HomeController::class, 'shop'])->name('shop');
+Route::get('/why',[HomeController::class, 'why'])->name('why');
+Route::get('/testimonial',[HomeController::class, 'testimonial'])->name('testimonial');

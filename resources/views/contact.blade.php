@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="assets/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
 
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/style.css') }}">
+
     <style>
         #change-item-cart table tbody tr td {
             width: 70px;
@@ -145,7 +148,7 @@
                                     </div>
 
                                     <div class="select-button">
-                                        <a href="{{url('/ListCart')}}" class="primary-btn view-card">VIEW CARD</a>
+                                        <a href="{{ url('/ListCart') }}" class="primary-btn view-card">VIEW CARD</a>
                                         <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
                                     </div>
 
@@ -180,7 +183,7 @@
                         <li><a href="#">Shop</a></li>
                         <li><a href="#">Collection</a></li>
                         <li><a href="#">Blog</a></li>
-                        <li><a href="/contact">Contact</a></li>
+                        <li><a href="#">Contact</a></li>
                         <li><a href="#">Pages</a></li>
                     </ul>
                 </nav>
@@ -197,7 +200,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
                         <a href="#"><i class="fa fa-home"></i> Home</a>
-                        <span>Shop</span>
+                        <span>Contact</span>
                     </div>
                 </div>
             </div>
@@ -206,48 +209,51 @@
     <!-- Breadcrumb Section Begin -->
 
     <!-- Product Shop Section Begin -->
-    <section class="product-shop spad">
-        <div class="container">
+    <section class="contact_section layout_padding">
+        <div class="container px-0">
+            <div class="heading_container ">
+                <h2 class="">
+                    Contact Us
+                </h2>
+            </div>
+        </div>
+        <div class="container container-bg">
             <div class="row">
-                <div class="col-lg-12 order-1 order-lg-2">
-                    <div class="product-list">
-                        <div class="row">
-                            @foreach ($products as $prd)
-                                <div class="col-lg-4 col-sm-6">
-                                    <div class="product-item">
-                                        <div class="pi-pic">
-                                            <img src="assets/img/products/{{ $prd->img }}" alt="">
-                                            <div class="sale pp-sale">Sale</div>
-                                            <div class="icon">
-                                                <i class="icon_heart_alt"></i>
-                                            </div>
-                                            <ul>
-                                                <li class="w-icon active"><a href="#"><i
-                                                            class="icon_bag_alt"></i></a></li>
-                                                <li class="quick-view"><a onclick="AddCart({{ $prd->id }})"
-                                                        href="javascript:">+
-                                                        Add Cart</a></li>
-                                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="pi-text">
-                                            {{-- <div class="catagory-name">Towel</div> --}}
-                                            <a href="#">
-                                                <h5>{{ $prd->name }}</h5>
-                                            </a>
-                                            <div class="product-price">
-                                                {{ number_format($prd->price) }}đ
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
+                <div class="col-lg-7 col-md-6 px-0">
+                    <div class="map_container">
+                        <div class="map-responsive">
+                            <iframe
+                                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=ITC"
+                                width="600" height="300" frameborder="0"
+                                style="border:0; width: 100%; height:100%" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6 col-lg-5 px-0">
+                    <form action="{{ route('handle-mail') }}">
+                        <div>
+                            <input type="text" name="name" placeholder="Name" />
+                        </div>
+                        <div>
+                            <input type="email" name="email" placeholder="Email" />
+                        </div>
+                        <div>
+                            <input type="text" name="phone" placeholder="Phone" />
+                        </div>
+                        <div>
+                            <input type="text" name="message" class="message-box" placeholder="Message" />
+                        </div>
+                        <div class="form-group mb-4">
+                            {!! htmlFormSnippet() !!}
+                        </div>
+                        <div class="d-flex ">
+                            <button>
+                                SEND
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
         </div>
     </section>
     <!-- Product Shop Section End -->
