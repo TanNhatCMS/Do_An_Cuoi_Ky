@@ -13,25 +13,31 @@
         </thead>
         <tbody>
             @if (Session::has('Cart') != null)
-            @foreach (Session::get('Cart')->products as $item)
-            <tr>
-                <td class="cart-pic first-row"><img src="assets/img/cart-page/{{ $item['productInfo']->img }}" alt=""></td>
-                <td class="cart-title first-row">
-                    <h5>{{ $item['productInfo']->name }}</h5>
-                </td>
-                <td class="p-price first-row">{{ $item['productInfo']->price }}đ</td>
-                <td class="qua-col first-row">
-                    <div class="quantity">
-                        <div class="pro-qty">
-                            <input type="text" value="{{ $item['quanty'] }}">
-                        </div>
-                    </div>
-                </td>
-                <td class="total-price first-row">{{ number_format($item['price']) }}đ</td>
-                <td class="close-td first-row"><i class="ti-save"></i></td>
-                <td class="close-td first-row"><i class="ti-close" onclick="DeleteListItemCart({{$item['productInfo']->id}});"></i></td>
-            </tr>
-            @endforeach
+                @foreach (Session::get('Cart')->products as $item)
+                    <tr>
+                        <td class="cart-pic first-row">
+                            <img width="70%" height="70%" src="assets/img/products/{{ $item['productInfo']->img }}"
+                                alt="">
+                        </td>
+                        <td class="cart-title first-row">
+                            <h5>{{ $item['productInfo']->name }}</h5>
+                        </td>
+                        <td class="p-price first-row">{{ number_format($item['productInfo']->price) }}đ</td>
+                        <td class="qua-col first-row">
+                            <div class="quantity">
+                                <div class="pro-qty">
+                                    <input id="quanty-item-{{ $item['productInfo']->id }}"
+                                                            type="text" value="{{ $item['quanty'] }}">
+                                </div>
+                            </div>
+                        </td>
+                        <td class="total-price first-row">{{ number_format($item['price']) }}đ</td>
+                        <td class="close-td first-row"><i onclick="SaveListItemCart({{ $item['productInfo']->id }});"
+                                class="ti-save"></i></td>
+                        <td class="close-td first-row"><i class="ti-close"
+                                onclick="DeleteListItemCart({{ $item['productInfo']->id }});"></i></td>
+                    </tr>
+                @endforeach
             @endif
         </tbody>
     </table>
