@@ -27,5 +27,7 @@
         <input hidden id="total-quanty-cart" type="number" value="{{ Session::get('Cart')->totalQuanty }}">
     </div>
 @else
+
+
 <input hidden id="total-quanty-cart" type="number" value="0">
 @endif
